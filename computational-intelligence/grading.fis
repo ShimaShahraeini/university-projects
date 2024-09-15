@@ -1,0 +1,56 @@
+[System]
+Name='grading'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=8
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='final_score'
+Range=[0 20]
+NumMFs=3
+MF1='bad':'trapmf',[-7.5 -0.833 8 10]
+MF2='so-so':'trapmf',[9 12 15 17]
+MF3='good':'trapmf',[16.5 18 20 27.5]
+
+[Input2]
+Name='homework'
+Range=[0 1]
+NumMFs=3
+MF1='none':'trapmf',[-0.3749 -0.04166 0.2 0.297]
+MF2='incompleted':'trapmf',[0.25 0.33 0.66 0.75]
+MF3='completed':'trapmf',[0.694 0.85 1 1]
+
+[Input3]
+Name='participation'
+Range=[0 1]
+NumMFs=3
+MF1='lazy':'trapmf',[-0.375 -0.04167 0.4 0.5]
+MF2='normal':'trapmf',[0.4 0.5 0.65 0.75]
+MF3='active':'trapmf',[0.7 0.8 1.042 1.375]
+
+[Output1]
+Name='output1'
+Range=[0 20]
+NumMFs=5
+MF1='F':'trapmf',[-7.5 -0.8333 9 10]
+MF2='B':'trapmf',[16.5 17 18 18.5]
+MF3='A':'trapmf',[18 19 20.84 27.5]
+MF4='D':'trapmf',[9 10 14 15]
+MF5='C':'trapmf',[14.5 15 16 17]
+
+[Rules]
+1 0 0, 1 (1) : 1
+2 1 1, 4 (1) : 1
+2 1 -1, 5 (1) : 1
+2 2 3, 2 (1) : 1
+2 2 -3, 5 (1) : 1
+2 3 3, 3 (1) : 1
+2 3 -3, 2 (1) : 1
+3 3 0, 3 (1) : 1
